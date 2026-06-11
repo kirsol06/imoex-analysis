@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Причинный анализ IMOEX</title>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Причинный анализ факторов доходности IMOEX</h1>
+    <p>
+      Проект посвящён оценке влияния нефтяных и валютных шоков на доходность
+      Индекса Московской биржи. В работе используются методы причинного
+      машинного обучения, а результат представлен в виде интерактивного графа.
+    </p>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card">
+        <h2>Интерактивный причинный граф</h2>
+
+        <p class="note">
+          Узлы графа соответствуют переменным исследования, стрелки показывают
+          предполагаемые направления влияния. Толщина и подписи на главных
+          стрелках отражают оценённые средние причинные эффекты.
+        </p>
+
+        <div id="network"></div>
+
+        <div class="legend">
+          <span><i class="dot green"></i> положительный эффект</span>
+          <span><i class="dot red"></i> отрицательный эффект</span>
+          <span><i class="dot gray"></i> контрольные связи</span>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Ключевые результаты</h2>
+
+        <div class="result">
+          <b>Нефтяной шок</b>
+          <div class="value positive">ATE = 0.065</div>
+          <div class="note">
+            Рост Brent оказывает положительное влияние на доходность IMOEX.
+          </div>
+        </div>
+
+        <div class="result">
+          <b>Валютный шок</b>
+          <div class="value negative">ATE = -0.135</div>
+          <div class="note">
+            Рост USD/RUB, то есть ослабление рубля, оказывает отрицательное
+            влияние на доходность IMOEX.
+          </div>
+        </div>
+
+        <div class="result">
+          <b>Гетерогенность</b>
+          <div class="note">
+            Эффекты меняются во времени. Валютный эффект оказался менее
+            стабильным.
+          </div>
+        </div>
+
+        <div class="result">
+          <b>Вывод</b>
+          <div class="note">
+            Российский фондовый рынок чувствителен к нефтяным и валютным шокам.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    Курсовая работа: причинный анализ предсказательных моделей для Индекса Московской биржи.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
